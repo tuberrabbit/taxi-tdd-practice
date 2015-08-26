@@ -39,3 +39,12 @@ so that I should pay 23 yuan.
 
 Conditions: it will const 0.25 yuan per minute for waiting.  
 
+##story 6:
+As a passenger,  
+when I take a driver for 0 kilometers and no waiting time,  
+so that I should pay 0 yuan.  
+
+##story 7:
+As a passenger,  
+when I take a driver for 0 kilometers and wait for 2 minutes,  
+so that I should pay 1 yuan.  
