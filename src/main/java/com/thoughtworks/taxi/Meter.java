@@ -1,17 +1,25 @@
 package com.thoughtworks.taxi;
 
+import com.thoughtworks.taxi.rule.BasicDistanceRule;
+import com.thoughtworks.taxi.rule.LongDistanceRule;
+import com.thoughtworks.taxi.rule.MinDistanceRule;
+import com.thoughtworks.taxi.rule.Rule;
+import com.thoughtworks.taxi.rule.ZeroDistanceRule;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Meter {
 
+    private final List<Rule> rules = Arrays.asList(new ZeroDistanceRule(), new MinDistanceRule(), new BasicDistanceRule(), new LongDistanceRule());
+
     public Integer count(Integer kilometers) {
-        if (kilometers == 0) {
-            return 0;
+        for (Rule rule : rules) {
+            if (rule.isApplicable(kilometers)) {
+                return rule.getCost(kilometers);
+            }
         }
-        if (kilometers <= 2) {
-            return 6;
-        }
-        if (kilometers <= 8) {
-            return (int) Math.round(6 + (kilometers - 2) * 1.5);
-        }
-        return (int) Math.round(6 + (8 - 2) * 1.5 + (kilometers - 8) * 1.5 * 1.5);
+        return 0;
     }
+
 }
