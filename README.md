@@ -48,3 +48,8 @@ so that I should pay 0 yuan.
 As a passenger,  
 when I take a driver for 0 kilometers and wait for 2 minutes,  
 so that I should pay 1 yuan.  
+
+##story 8:
+As a passenger,  
+when I take a driver for 3 kilometers and wait for 2 minutes,  
+so that I should pay 8 yuan.  

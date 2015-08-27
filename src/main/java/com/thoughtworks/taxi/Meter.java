@@ -24,12 +24,18 @@ public class Meter {
 
     public int count(Distance distance, Time time) {
         double cost = 0;
+
         for (Rule rule : rules) {
             if (rule.isApplicable(distance.getKilometers())) {
-                cost += rule.getCost(distance.getKilometers());
+                cost += rule.getCostBy(distance.getKilometers());
             }
         }
-        cost += time.getMinutes() * 0.25;
+        cost += getCostBy(time);
+
         return (int) Math.round(cost);
+    }
+
+    private double getCostBy(Time time) {
+        return time.getMinutes() * Constants.PRICE_OF_PER_MINUTE_FOR_WAITING;
     }
 }
