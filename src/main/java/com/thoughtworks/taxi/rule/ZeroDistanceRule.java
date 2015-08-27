@@ -2,7 +2,7 @@ package com.thoughtworks.taxi.rule;
 
 public class ZeroDistanceRule implements Rule {
     @Override
-    public int getCost(Integer kilometers) {
+    public double getCost(Integer kilometers) {
         return ZERO;
     }
 

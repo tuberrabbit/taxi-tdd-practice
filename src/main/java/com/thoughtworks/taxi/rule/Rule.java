@@ -8,7 +8,7 @@ public interface Rule {
     double PRICE_OF_PER_KILOMETER = 1.5;
     int BASIC_DISTANCE = 8;
 
-    int getCost(Integer kilometers);
+    double getCost(Integer kilometers);
 
     boolean isApplicable(Integer kilometers);
 }

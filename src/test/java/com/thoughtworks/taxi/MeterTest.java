@@ -62,4 +62,10 @@ public class MeterTest {
         assertThat(meter.count(new Distance(11), new Time(3))).isEqualTo(23);
 
     }
+
+    @Test
+    public void should_cost_8_yuan_if_it_take_3_kilometers_and_waite_2_minutes() {
+        assertThat(meter.count(new Distance(3), new Time(2))).isEqualTo(8);
+
+    }
 }

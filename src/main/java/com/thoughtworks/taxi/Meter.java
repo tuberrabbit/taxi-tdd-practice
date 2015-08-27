@@ -11,22 +11,25 @@ import java.util.List;
 
 public class Meter {
 
-    private final List<Rule> rules = Arrays.asList(new ZeroDistanceRule(), new MinDistanceRule(), new BasicDistanceRule(), new LongDistanceRule());
+    private final List<Rule> rules =
+            Arrays.asList(new ZeroDistanceRule(), new MinDistanceRule(), new BasicDistanceRule(), new LongDistanceRule());
 
     public int count(Distance distance) {
-        for (Rule rule : rules) {
-            if (rule.isApplicable(distance.getKilometers())) {
-                return rule.getCost(distance.getKilometers());
-            }
-        }
-        return 0;
+        return count(distance, new Time(0));
     }
 
     public int count(Time time) {
-        return (int) Math.round(0.25 * time.getMinutes());
+        return count(new Distance(0), time);
     }
 
     public int count(Distance distance, Time time) {
-        return count(distance) + count(time);
+        double cost = 0;
+        for (Rule rule : rules) {
+            if (rule.isApplicable(distance.getKilometers())) {
+                cost += rule.getCost(distance.getKilometers());
+            }
+        }
+        cost += time.getMinutes() * 0.25;
+        return (int) Math.round(cost);
     }
 }
