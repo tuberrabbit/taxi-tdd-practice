@@ -32,6 +32,10 @@ public class Meter {
         }
         cost += getCostBy(time);
 
+        return round(cost);
+    }
+
+    private int round(double cost) {
         return (int) Math.round(cost);
     }
 
